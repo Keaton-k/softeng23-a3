@@ -1,6 +1,6 @@
 import pytest
 
-from pmgr.project import Project
+from pmgr.project import Project,TaskException
 
 
 @pytest.fixture(scope="function")
@@ -12,6 +12,13 @@ def testproj():
 def tests_add(testproj):
     testproj.add_task('dosomething')
     assert 'dosomething' in testproj.get_tasks()
+    
+def tests_double_add(testproj):
+    testproj.add_task('hello')
+    with pytest.raises(TaskException) as excinfo:
+        testproj.add_task('hello')
+    assert type(excinfo) == TaskException
+
 
 def test_remove(testproj):
     task1 = 'dosomething'
@@ -19,6 +26,9 @@ def test_remove(testproj):
     testproj.remove_task(task1)
     assert task1 not in testproj.get_tasks() 
 
+def test_remove_not_there(testproj):
+    with pytest.raises(TaskException):
+        testproj.remove_task("nothing")
 
 def test_show(testproj):
     tasks = []
