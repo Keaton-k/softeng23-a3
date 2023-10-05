@@ -8,4 +8,4 @@
 ##
 * Answers
 1. We think Task should be a string because task is a name of string for anycase, so we can make it simply.
-1. We will add `pmgr make project` as a next feature which you can make new project. This answer dosen't change our previous answer because this feature doesn't affect　Task.
+1. We will add `pmgr make project` as a next feature which you can make new project. This answer dosen't change our previous answer because this feature doesn't affect Task.
